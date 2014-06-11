@@ -1136,7 +1136,7 @@ int stlink_erase_flash_page(stlink_t *sl, stm32_addr_t flashaddr)
   } else if (sl->core_id == STM32VL_CORE_ID 
 	     || sl->core_id == STM32F0_CORE_ID 
 	     || sl->chip_id == STM32_CHIPID_F3 
-	     || sl->chip_id == STM32_CHIPID_F302
+	     || sl->chip_id == STM32_CHIPID_F302x6x8
 	     || sl->chip_id == STM32_CHIPID_F37x) {
     /* wait for ongoing op to finish */
     wait_flash_busy(sl);
@@ -1344,7 +1344,7 @@ int write_loader_to_sram(stlink_t *sl, stm32_addr_t* addr, size_t* size) {
 		|| sl->chip_id == STM32_CHIPID_L1_HIGH || sl->chip_id == STM32_CHIPID_L152_RE ) { /* stm32l */
         loader_code = loader_code_stm32l;
         loader_size = sizeof(loader_code_stm32l);
-    } else if (sl->core_id == STM32VL_CORE_ID || sl->chip_id == STM32_CHIPID_F3 || sl->chip_id == STM32_CHIPID_F302 ||
+    } else if (sl->core_id == STM32VL_CORE_ID || sl->chip_id == STM32_CHIPID_F3 || sl->chip_id == STM32_CHIPID_F302x6x8 ||
                sl->chip_id == STM32_CHIPID_F37x) {
         loader_code = loader_code_stm32vl;
         loader_size = sizeof(loader_code_stm32vl);
@@ -1691,7 +1691,7 @@ int stlink_write_flash(stlink_t *sl, stm32_addr_t addr, uint8_t* base, uint32_t 
     	val = stlink_read_debug32(sl, STM32L_FLASH_PECR)
              | (1 << 0) | (1 << 1) | (1 << 2);
     	stlink_write_debug32(sl, STM32L_FLASH_PECR, val);
-    } else if (sl->core_id == STM32VL_CORE_ID || sl->core_id == STM32F0_CORE_ID || sl->chip_id == STM32_CHIPID_F3 || sl->chip_id == STM32_CHIPID_F302 ||
+    } else if (sl->core_id == STM32VL_CORE_ID || sl->core_id == STM32F0_CORE_ID || sl->chip_id == STM32_CHIPID_F3 || sl->chip_id == STM32_CHIPID_F302x6x8 ||
                sl->chip_id == STM32_CHIPID_F37x) {
         ILOG("Starting Flash write for VL/F0 core id\n");
         /* flash loader initialization */
@@ -1795,7 +1795,7 @@ int run_flash_loader(stlink_t *sl, flash_loader_t* fl, stm32_addr_t target, cons
         stlink_write_reg(sl, count, 2); /* count (32 bits words) */
         stlink_write_reg(sl, fl->loader_addr, 15); /* pc register */
 
-    } else if (sl->core_id == STM32VL_CORE_ID || sl->core_id == STM32F0_CORE_ID || sl->chip_id == STM32_CHIPID_F3  || sl->chip_id == STM32_CHIPID_F302 ||
+    } else if (sl->core_id == STM32VL_CORE_ID || sl->core_id == STM32F0_CORE_ID || sl->chip_id == STM32_CHIPID_F3  || sl->chip_id == STM32_CHIPID_F302x6x8 ||
             sl->chip_id == STM32_CHIPID_F37x) {
 
         size_t count = size / sizeof(uint16_t);
@@ -1854,7 +1854,7 @@ int run_flash_loader(stlink_t *sl, flash_loader_t* fl, stm32_addr_t target, cons
         return -1;
       }
 
-    } else if (sl->core_id == STM32VL_CORE_ID || sl->core_id == STM32F0_CORE_ID || sl->chip_id == STM32_CHIPID_F3 || sl->chip_id == STM32_CHIPID_F302 ||
+    } else if (sl->core_id == STM32VL_CORE_ID || sl->core_id == STM32F0_CORE_ID || sl->chip_id == STM32_CHIPID_F3 || sl->chip_id == STM32_CHIPID_F302x6x8 ||
               sl->chip_id == STM32_CHIPID_F37x) {
 
       stlink_read_reg(sl, 2, &rr);
