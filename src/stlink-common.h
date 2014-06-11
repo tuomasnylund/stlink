@@ -102,7 +102,7 @@ extern "C" {
 #define STM32_CHIPID_F2 0x411
 #define STM32_CHIPID_F1_LOW 0x412
 #define STM32_CHIPID_F3 0x422
-#define STM32_CHIPID_F302x6x8 0x439
+#define STM32_CHIPID_F302x6x8 0x439 /* F302x6 or F302x8, might be shared with others also */
 #define STM32_CHIPID_F37x 0x432
 #define STM32_CHIPID_F4 0x413
 #define STM32_CHIPID_F4_HD 0x419
