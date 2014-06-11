@@ -102,6 +102,7 @@ extern "C" {
 #define STM32_CHIPID_F2 0x411
 #define STM32_CHIPID_F1_LOW 0x412
 #define STM32_CHIPID_F3 0x422
+#define STM32_CHIPID_F302 0x439
 #define STM32_CHIPID_F37x 0x432
 #define STM32_CHIPID_F4 0x413
 #define STM32_CHIPID_F4_HD 0x419
@@ -278,6 +279,17 @@ static const chip_params_t devices[] = {
                     .flash_size_reg = 0x1ffff7e0,
                     .flash_pagesize = 0x400,
                     .sram_size = 0x2000,
+                    .bootrom_base = 0x1ffff000,
+                    .bootrom_size = 0x800
+        },
+        {
+	    // This is STM32F302R8T6 device from STM32 Nucleo board.
+	    // Support based on DM00094349.pdf (RM0365) document.
+            .chip_id = STM32_CHIPID_F302,
+                    .description = "F3 device",
+                    .flash_size_reg = 0x1ffff7cc,
+                    .flash_pagesize = 0x800,
+                    .sram_size = 0xa000,
                     .bootrom_base = 0x1ffff000,
                     .bootrom_size = 0x800
         },
