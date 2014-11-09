@@ -110,7 +110,6 @@ extern "C" {
 #define STM32_CHIPID_F4_DE 0x433
 #define STM32_CHIPID_F1_HIGH 0x414
 #define STM32_CHIPID_L1_MEDIUM 0x416
-=======
     /*
      * Chip IDs are explained in the appropriate programming manual for the
      * DBGMCU_IDCODE register (0xE0042000)
@@ -328,12 +327,12 @@ extern "C" {
 	    // This is STM32F302R8T6 device from STM32 Nucleo board.
 	    // Support based on DM00094349.pdf (RM0365) document.
             .chip_id = STM32_CHIPID_F302x6x8,
-                    .description = "F3 device",
-                    .flash_size_reg = 0x1ffff7cc,
-                    .flash_pagesize = 0x800,
-                    .sram_size = 0xa000,
-                    .bootrom_base = 0x1ffff000,
-                    .bootrom_size = 0x800
+            .description = "F3 device",
+            .flash_size_reg = 0x1ffff7cc,
+            .flash_pagesize = 0x800,
+            .sram_size = 0xa000,
+            .bootrom_base = 0x1ffff000,
+            .bootrom_size = 0x800
         },
         {
             // This is STK32F303VCT6 device from STM32 F3 Discovery board.
