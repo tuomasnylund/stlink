@@ -93,7 +93,6 @@ extern "C" {
 #define CORE_M3_R2 0x4BA00477
 #define CORE_M4_R0 0x2BA01477
 
-<<<<<<< HEAD
 /*
  * Chip IDs are explained in the appropriate programming manual for the
  * DBGMCU_IDCODE register (0xE0042000)
