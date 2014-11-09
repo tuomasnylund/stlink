@@ -28,7 +28,7 @@
 // Build : arm-eabi-gcc -c stm32lx.S
     .text
     .syntax unified
-    .cpu cortex-m3
+    .cpu cortex-m0plus
     .thumb
     .thumb_func
     .global write
@@ -46,11 +46,15 @@
 
 write_word:
     // Load one word from address in r0, increment by 4
-    ldr.w    ip, [r1], #4
+    ldr    r4, [r1]
     // Store the word to address in r1, increment by 4
-    str.w    ip, [r0], #4
+    str    r4, [r0]
     // Increment r3
     adds    r3, #1
+	adds	r1, #4
+	// does not matter, only first addr is important
+	// next 15 bytes are in sequnce RM0367 page 66
+	adds	r0, #4
 
 test_done:
     // Compare r3 and r2
