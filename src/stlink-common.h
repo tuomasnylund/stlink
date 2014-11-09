@@ -132,7 +132,6 @@ extern "C" {
 
 #define STM32_CHIPID_F411RE         0x431
 
->>>>>>> texane/master
 #define STM32_CHIPID_L1_MEDIUM_PLUS 0x427
 #define STM32_CHIPID_F1_VL_HIGH     0x428
 
